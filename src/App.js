@@ -1,6 +1,7 @@
 import './App.css';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from "firebase/auth";
 import { auth } from './firebase'
+import SendMessage from './pages/SendMessage';
 let email = '123@gmail.com'
 let password = 'password123'
 const handleSignUp = (e) => {
@@ -51,6 +52,7 @@ function App() {
       <button onClick={handleSignUp}>Sign up</button>
       <button onClick={handleSignIn}>Log in</button>
       <button onClick={handleSignOut}>Log out</button>
+      <SendMessage />
     </div>
   );
 }
