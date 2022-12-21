@@ -1,5 +1,5 @@
 import React from 'react'
-import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+import { collection, addDoc, serverTimestamp, getDocs  } from "firebase/firestore"
 import { db, auth } from '../firebase';
 function SendMessage() {
 
@@ -19,12 +19,21 @@ function SendMessage() {
             console.error("Error adding document: ", e);
           }
     }
+
+    const getMessages = async (e) => {
+        const querySnapshot = await getDocs(collection(db, "messages"));
+        querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+        console.log(doc.data())
+        });
+    }
   return (
     <div>
         <form>
             <input type='text' placeholder='Send Message' />
             <button type='submit' onClick={handleSend}>Send</button>
         </form>
+        <button onClick={getMessages}>Get Messages</button>
     </div>
   )
 }
