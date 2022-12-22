@@ -7,6 +7,7 @@ import LogIn from './pages/LogIn';
 import { useState } from 'react';
 import SignOut from './pages/SignOut';
 import Form from './pages/Form';
+import FormLogIn from './pages/FormLogIn';
 // let email = '123@gmail.com'
 // let password = 'password123'
 // const handleSignUp = (e) => {
@@ -63,7 +64,8 @@ function App() {
           !user ? <LogIn  setUser={setUser}/> : <SignOut setUser={setUser}/>
         }
       </div> */}
-      <Form />
+      <Form setUser={setUser}/>
+      {/* <FormLogIn setUser={setUser}/> */}
       
       {/* <SendMessage /> */}
     </div>
