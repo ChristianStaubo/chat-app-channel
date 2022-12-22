@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import { useState } from 'react';
 import SignOut from './pages/SignOut';
+import Form from './pages/Form';
 // let email = '123@gmail.com'
 // let password = 'password123'
 // const handleSignUp = (e) => {
@@ -56,14 +57,15 @@ function App() {
   return (
     <div className="App">
       <h1 className='text-4xl font-bold text-center'>Firebase Chat Room!</h1>
-      <div className='mt-10 bg-blue-500'>
+      {/* <div className='mt-10 bg-blue-500'>
         <SignUp />
         {
           !user ? <LogIn  setUser={setUser}/> : <SignOut setUser={setUser}/>
         }
-      </div>
+      </div> */}
+      <Form />
       
-      <SendMessage />
+      {/* <SendMessage /> */}
     </div>
   );
 }
