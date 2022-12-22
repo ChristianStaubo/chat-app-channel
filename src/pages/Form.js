@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from "firebase/auth";
 import { auth } from '../firebase'
+import { useNavigate } from "react-router-dom";
 // let email = '123@gmail.com'
 // let password = 'password123'
 
 function Form({setUser}) {
+  let navigate = useNavigate()
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
 
@@ -25,6 +27,10 @@ function Form({setUser}) {
       // ..
     });
   }
+
+  const navigateToLogin = () => {
+    navigate('/')
+  }
   return (
     <div className=' mt-10 flex rounded-lg bg-gray-800 w-full md:w-[30%] mx-auto'>
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
@@ -44,7 +50,7 @@ function Form({setUser}) {
             </div>
 
             <div>
-                <p className='text-gray-300'>Have an account? <span className='text-blue-400'>Log in</span></p>
+                <p className='text-gray-300'>Have an account? <span className='text-blue-400' onClick={navigateToLogin}>Log in</span></p>
             </div>
             <button type='submit' className='text-gray-300 my-5 py-2 w-72 rounded bg-blue-800' onClick={handleSignUp}>Sign up</button>
             
