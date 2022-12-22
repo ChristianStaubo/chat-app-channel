@@ -1,9 +1,11 @@
 import './App.css';
 // import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from "firebase/auth";
-// import { auth } from './firebase'
+import { auth } from './firebase'
 import SendMessage from './pages/SendMessage';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
+import { useState } from 'react';
+import SignOut from './pages/SignOut';
 // let email = '123@gmail.com'
 // let password = 'password123'
 // const handleSignUp = (e) => {
@@ -49,10 +51,18 @@ import LogIn from './pages/LogIn';
 
 
 function App() {
+  const [user,setUser] = useState(auth.currentUser)
+  console.log(user)
   return (
     <div className="App">
-      <SignUp />
-      <LogIn />
+      <h1 className='text-4xl font-bold text-center'>Firebase Chat Room!</h1>
+      <div className='mt-10 bg-blue-500'>
+        <SignUp />
+        {
+          !user ? <LogIn  setUser={setUser}/> : <SignOut setUser={setUser}/>
+        }
+      </div>
+      
       <SendMessage />
     </div>
   );
