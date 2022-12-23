@@ -28,7 +28,7 @@ function FormLogIn({setUser}) {
         navigate('/signUp')
       }
   return (
-    <div className=' mt-10 flex rounded-lg bg-gray-800 w-full md:w-[30%] mx-auto'>
+    <div className=' mt-10 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto'>
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Log in</h1>
             <div className='flex flex-col m-2 '>
