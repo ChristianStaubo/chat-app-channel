@@ -36,16 +36,16 @@ function Form({setUser}) {
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Sign up</h1>
             <div className='flex flex-col m-2 '>
-              <label className=' text-gray-300' for='email'>Email</label>
+              <label className=' text-gray-300' htmlfor='email'>Email</label>
               <input value={email} onChange={(e) => setEmail(e.target.value)} className='py-2 w-72 px-2 rounded-md  bg-gray-300' type='text'  />
             </div>
             
             <div className='flex flex-col m-2'>
-              <label className='text-gray-300' for='password'>Password</label>
+              <label className='text-gray-300' htmlfor='password'>Password</label>
               <input value={password} onChange={(e) => setPassword(e.target.value)} className='w-72 px-2 rounded-md py-2  bg-gray-300' type='password'  />
             </div>
             <div className='flex flex-col gap-2'>
-              <label className='text-gray-300' for='password'>Verify password</label>
+              <label className='text-gray-300' htmlfor='password'>Verify password</label>
               <input className='w-72 px-2 rounded-md py-2 bg-gray-300' type='password'  />
             </div>
 

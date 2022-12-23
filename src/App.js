@@ -9,6 +9,7 @@ import SignOut from './pages/SignOut';
 import Form from './pages/Form';
 import FormLogIn from './pages/FormLogIn';
 import { Route, Routes, useInRouterContext } from "react-router-dom";
+import Messages from './pages/Messages';
 // let email = '123@gmail.com'
 // let password = 'password123'
 // const handleSignUp = (e) => {
@@ -68,6 +69,8 @@ function App() {
       <Routes>
         <Route path='/' element={<FormLogIn setUser={setUser}/>}></Route>
         <Route path='/signUp' element={<Form setUser={setUser}/>}></Route>
+        <Route path='/messages' element={<Messages />}></Route>
+
       </Routes>
       
       
