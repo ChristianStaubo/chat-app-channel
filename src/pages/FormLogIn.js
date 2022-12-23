@@ -8,19 +8,21 @@ function FormLogIn({setUser}) {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const handleSignIn = (e) => {
+      e.preventDefault()
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user
           console.log('Signed in user => ', user)
           setUser(auth.currentUser)
-          
+          navigate('/messages')
           
           // ...
         })
         .catch((error) => {
           const errorCode = error.code
           const errorMessage = error.message
+          console.log(errorMessage,errorCode)
         })
       }
 
@@ -32,13 +34,13 @@ function FormLogIn({setUser}) {
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Log in</h1>
             <div className='flex flex-col m-2 '>
-              <label className=' text-gray-300' htmlfor='email'>Email</label>
+              <label className=' text-gray-300' htmlFor='email'>Email</label>
               <input value={email} onChange={(e) => setEmail(e.target.value)} className='py-2 w-72 px-2 rounded-md  bg-gray-300' type='text'  />
             </div>
             
             <div className='flex flex-col m-2'>
-              <label className='text-gray-300' htmlfor='password'>Password</label>
-              <input value={password} setPassword={(e) => setPassword(e.target.value)} className='w-72 px-2 rounded-md py-2  bg-gray-300' type='password'  />
+              <label className='text-gray-300' htmlFor='password'>Password</label>
+              <input value={password} onChange={(e) => setPassword(e.target.value)} className='w-72 px-2 rounded-md py-2  bg-gray-300' type='password'  />
             </div>
             
 

@@ -14,7 +14,7 @@ function SignOut({setUser}) {
         });
       }
   return (
-    <button onClick={handleSignOut}>Log out</button>
+    <button className='bg-yellow-500' onClick={handleSignOut}>Log out</button>
   )
 }
 

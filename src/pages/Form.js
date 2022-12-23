@@ -18,12 +18,14 @@ function Form({setUser}) {
       const user = userCredential.user
       console.log(user)
       setUser(user)
+      navigate('/messages')
       // ...
     })
     .catch((error) => {
       console.log(error)
       const errorCode = error.code
       const errorMessage = error.message
+      console.log(errorMessage,errorCode)
       // ..
     });
   }

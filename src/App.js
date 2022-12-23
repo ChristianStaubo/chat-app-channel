@@ -2,14 +2,13 @@ import './App.css';
 // import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from "firebase/auth";
 import { auth } from './firebase'
 import SendMessage from './pages/SendMessage';
-import SignUp from './pages/SignUp';
-import LogIn from './pages/LogIn';
 import { useState } from 'react';
 import SignOut from './pages/SignOut';
 import Form from './pages/Form';
 import FormLogIn from './pages/FormLogIn';
 import { Route, Routes, useInRouterContext } from "react-router-dom";
 import Messages from './pages/Messages';
+import Messages2 from './pages/Messages2';
 // let email = '123@gmail.com'
 // let password = 'password123'
 // const handleSignUp = (e) => {
@@ -69,13 +68,14 @@ function App() {
       <Routes>
         <Route path='/' element={<FormLogIn setUser={setUser}/>}></Route>
         <Route path='/signUp' element={<Form setUser={setUser}/>}></Route>
-        <Route path='/messages' element={<Messages />}></Route>
+        {/* <Route path='/messages' element={<Messages />}></Route> */}
+        <Route path='/messages' element={<Messages user={user} />}></Route>
 
       </Routes>
       
       
       
-      {/* <SendMessage /> */}
+      <SendMessage />
     </div>
   );
 }
