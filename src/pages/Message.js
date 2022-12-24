@@ -5,7 +5,7 @@ function Message({message,user}) {
     console.log('Message => ',message)
     if (message.name !== user.email) {
         return (
-            <div className=' rounded-xl mr-2 flex flex-row gap-2  max-w-[70%]  py-2 my-2 self-start '>
+            <div className=' rounded-xl ml-2 flex flex-row gap-2  max-w-[70%]  py-2 my-2 self-start '>
             
             <div className='bg-gray-400 rounded-xl py-2 px-1 my-2 '>
                 <h1 className='text-gray-800 pb-1'>{message.name}</h1>
@@ -22,7 +22,7 @@ function Message({message,user}) {
                 <p className='bg-blue-600 rounded-xl py-2 px-1 my-2  break-all'>{message.text}</p>
             </div>
             
-        </div> 
+        </div>
     )
 
 }

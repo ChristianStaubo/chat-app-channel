@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import reactImg from '../logo192.png'
 import SendMessage from './SendMessage'
-import { collection, addDoc, serverTimestamp, getDocs, orderBy, query, onSnapshot  } from "firebase/firestore"
+import { collection, addDoc, serverTimestamp, getDocs, orderBy, query, onSnapshot, limitToLast  } from "firebase/firestore"
 import { db, auth } from '../firebase';
 import SignOut from './SignOut';
 import Message from './Message';
@@ -10,7 +10,7 @@ const Messages2 = ({user}) => {
     const scroll = useRef();
   
     useEffect(() => {
-      const querySnapshot = query(collection(db, 'messages'), orderBy('timestamp'));
+      const querySnapshot = query(collection(db, 'messages'), orderBy('timestamp'),limitToLast(50));
       const unsubscribe = onSnapshot(querySnapshot, (querySnapshot) => {
         let messages = [];
         querySnapshot.forEach((doc) => {
@@ -22,17 +22,18 @@ const Messages2 = ({user}) => {
     }, []);
   
     return (
-      <>
-        <div className='h-screen  bg-gray-800 w-full md:w-[50%] md:mx-auto text-white flex flex-col items-start '>
+      <div className='flex flex-col'>
+        <div className='h-[80vh] mt-10  bg-gray-800 w-full md:w-[50%] md:mx-auto text-white flex flex-col items-start overflow-y-auto overflow-x-hidden  '>
           {messages &&
             messages.map((message) => (
               <Message key={message.id} message={message} user={user} />
             ))}
+            
         </div>
-        {/* Send Message Compoenent */}
-        {/* <SendMessage scroll={scroll} /> */}
-        {/* <span ref={scroll}></span> */}
-      </>
+        <SendMessage />
+        
+        
+      </div>
     );
   };
   
