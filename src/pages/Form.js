@@ -92,6 +92,9 @@ function Form({setUser}) {
     navigate('/')
   }
   return (
+    <div>
+
+    
     <div className={`${!err ? 'mt-10 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[30%] mx-auto'}`}>
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Sign up</h1>
@@ -118,11 +121,24 @@ function Form({setUser}) {
             <div>
                 <p className='text-gray-300'>Have an account? <span className='text-blue-400 hover:cursor-pointer' onClick={navigateToLogin}>Log in</span></p>
             </div>
-            <button type='submit' className='text-gray-300 my-5 py-2 w-72 rounded bg-blue-800' onClick={handleSignUp}>Sign up</button>
+            <button type='submit' className='text-white my-5 py-2 w-72 rounded bg-[#7074bc]' onClick={handleSignUp}>Sign up</button>
             
             
             
         </form>
+    </div>
+    <footer>
+       
+       <div className='waves'>
+           <div className='wave signUp'  id='wave1'></div>
+           <div className='wave signUp' id='wave2'></div>
+           <div className='wave signUp' id='wave3'></div>
+           <div className='wave signUp' id='wave4'></div>
+           <div className="notWave"></div>
+           
+
+       </div>
+       </footer>
     </div>
   )
 }
