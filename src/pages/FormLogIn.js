@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from "firebase/auth";
 import { auth } from '../firebase'
 import { useNavigate } from "react-router-dom";
-import {listUsers} from '../firebase'
+// import {listUsers} from '../firebase'
 function FormLogIn({setUser}) {
     let navigate = useNavigate()
     const [email,setEmail] = useState('')

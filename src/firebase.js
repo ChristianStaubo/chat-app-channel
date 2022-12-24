@@ -13,24 +13,24 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID
 };
 
-let listAllUsers = (nextPageToken) => {
-  // List batch of users, 1000 at a time.
-  getAuth()
-    .listUsers(1000, nextPageToken)
-    .then((listUsersResult) => {
-      console.log('LISTING USERS')
-      listUsersResult.users.forEach((userRecord) => {
-        console.log('user', userRecord.toJSON());
-      });
-      if (listUsersResult.pageToken) {
-        // List next batch of users.
-        listAllUsers(listUsersResult.pageToken);
-      }
-    })
-    .catch((error) => {
-      console.log('Error listing users:', error);
-    });
-};
+// let listAllUsers = (nextPageToken) => {
+//   // List batch of users, 1000 at a time.
+//   getAuth()
+//     .listUsers(1000, nextPageToken)
+//     .then((listUsersResult) => {
+//       console.log('LISTING USERS')
+//       listUsersResult.users.forEach((userRecord) => {
+//         console.log('user', userRecord.toJSON());
+//       });
+//       if (listUsersResult.pageToken) {
+//         // List next batch of users.
+//         listAllUsers(listUsersResult.pageToken);
+//       }
+//     })
+//     .catch((error) => {
+//       console.log('Error listing users:', error);
+//     });
+// };
 // Start listing users from the beginning, 1000 at a time.
 
 // const findUsers = () => {
@@ -67,4 +67,4 @@ let listAllUsers = (nextPageToken) => {
 const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 export const db = getFirestore(app)
-export const listUsers = listAllUsers(app)
+// export const listUsers = listAllUsers(app)

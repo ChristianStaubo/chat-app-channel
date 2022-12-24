@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile  } from "firebase/auth";
 import { auth, db } from '../firebase'
 import { useNavigate } from "react-router-dom";
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, query } from 'firebase/firestore';
 // let email = '123@gmail.com'
 // let password = 'password123'
 
@@ -11,24 +11,44 @@ function Form({setUser}) {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [username,setUsername] = useState('')
+  const [err,setErr] = useState(false)
+  const [errorMessage,setErrorMessage] = useState('')
+//   const checkIfUsernameExists = () => {
+//     const querySnapshot = query(collection(db, 'takenUsernames'));
+//         const unsubscribe = onSnapshot(querySnapshot, (querySnapshot) => {
+          
+//           querySnapshot.forEach((doc) => {
+//             console.log(doc.data())
+//             if (username === doc.username) {
+//               console.log('USERNAME ALREADY TAKEN')
+//               return
+//             }
+//           });
+          
+//         });
+//         return () => unsubscribe();
+//   }
+
+
+//   const addUsernameToTaken = async (e) => {
+//   e.preventDefault()
+
+//   try {
+//       const docRef = await addDoc(collection(db, "takenUsernames"), {
+//         name: username
+        
+//       });
+//     } catch (e) {
+//       console.error("Error adding document: ", e);
+//     }
+    
+// }
+
 
   const handleSignUp = (e) => {
     e.preventDefault()
     console.log(auth)
-    // const findUsers = () => {
-    //   const querySnapshot = query(collection(db, 'takenUsernames'));
-    //       const unsubscribe = onSnapshot(querySnapshot, (querySnapshot) => {
-            
-    //         querySnapshot.forEach((doc) => {
-    //           if (username === doc.username) {
-    //             console.log('USERNAME ALREADY TAKEN')
-    //             return
-    //           }
-    //         });
-            
-    //       });
-    //       return () => unsubscribe();
-    // }
+    // checkIfUsernameExists()
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
@@ -37,10 +57,12 @@ function Form({setUser}) {
       updateProfile(user, {
         displayName: username
       }).then(() => {
-        // Profile updated!
+        // addUsernameToTaken()
         console.log('User updated => ',user.displayName)
         // ...
       }).catch((error) => {
+        setErrorMessage(error.message)
+        setErr(true)
         console.log(error)
       });
       console.log(userCredential)
@@ -52,7 +74,16 @@ function Form({setUser}) {
       console.log(error)
       const errorCode = error.code
       const errorMessage = error.message
-      console.log(errorMessage,errorCode)
+      if (error.code === 'auth/weak-password') {
+        setErrorMessage('Password should be at least 6 characters')
+      }
+      if (error.code === 'auth/invalid-email') {
+        setErrorMessage('Invalid email address')
+      }
+
+      
+      setErr(true)
+      console.log(errorMessage,`ERROR CODE : ${errorCode}`)
       // ..
     });
   }
@@ -61,9 +92,10 @@ function Form({setUser}) {
     navigate('/')
   }
   return (
-    <div className=' mt-10 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto'>
+    <div className={`${!err ? 'mt-10 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[30%] mx-auto'}`}>
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Sign up</h1>
+            {err ? <p className='text-red-500'>{errorMessage}</p> : ''}
             <div className='flex flex-col m-2 '>
               <label className=' text-gray-300' htmlfor='email'>Email</label>
               <input value={email} onChange={(e) => setEmail(e.target.value)} className='py-2 w-72 px-2 rounded-md  bg-gray-300' type='text'  />
