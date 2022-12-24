@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile  } from "firebase/auth";
 import { auth } from '../firebase'
 import { useNavigate } from "react-router-dom";
 // let email = '123@gmail.com'
@@ -12,11 +12,22 @@ function Form({setUser}) {
 
   const handleSignUp = (e) => {
     e.preventDefault()
+    console.log(auth)
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user
-      console.log(user)
+      console.log('User before => ',user.displayName)
+      updateProfile(user, {
+        displayName: 'New User'
+      }).then(() => {
+        // Profile updated!
+        console.log('User updated => ',user.displayName)
+        // ...
+      }).catch((error) => {
+        console.log(error)
+      });
+      console.log(userCredential)
       setUser(user)
       navigate('/messages')
       // ...

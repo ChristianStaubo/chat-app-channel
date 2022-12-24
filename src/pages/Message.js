@@ -1,8 +1,6 @@
 import React from 'react'
 
 function Message({message,user}) {
-    console.log('User => ',user)
-    console.log('Message => ',message)
     if (message.name !== user.email) {
         return (
             <div className=' rounded-xl ml-2 flex flex-row gap-2  max-w-[70%]  py-2 my-2 self-start '>
