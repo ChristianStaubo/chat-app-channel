@@ -9,6 +9,7 @@ function Form({setUser}) {
   let navigate = useNavigate()
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+  const [username,setUsername] = useState('')
 
   const handleSignUp = (e) => {
     e.preventDefault()
@@ -19,7 +20,7 @@ function Form({setUser}) {
       const user = userCredential.user
       console.log('User before => ',user.displayName)
       updateProfile(user, {
-        displayName: 'New User'
+        displayName: username
       }).then(() => {
         // Profile updated!
         console.log('User updated => ',user.displayName)
@@ -51,6 +52,11 @@ function Form({setUser}) {
             <div className='flex flex-col m-2 '>
               <label className=' text-gray-300' htmlfor='email'>Email</label>
               <input value={email} onChange={(e) => setEmail(e.target.value)} className='py-2 w-72 px-2 rounded-md  bg-gray-300' type='text'  />
+            </div>
+
+            <div className='flex flex-col m-2 '>
+              <label className=' text-gray-300' htmlfor='username'>Username</label>
+              <input value={username} onChange={(e) => setUsername(e.target.value)} className='py-2 w-72 px-2 rounded-md  bg-gray-300' type='text'  />
             </div>
             
             <div className='flex flex-col m-2'>

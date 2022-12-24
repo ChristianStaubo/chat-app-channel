@@ -10,7 +10,7 @@ function SendMessage() {
         try {
             const docRef = await addDoc(collection(db, "messages"), {
               text: message,
-              name: auth.currentUser.email,
+              name: auth.currentUser.displayName,
               timestamp: serverTimestamp()
               
             });

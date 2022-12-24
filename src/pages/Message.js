@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Message({message,user}) {
-    if (message.name !== user.email) {
+    if (message.name !== user.displayName) {
         return (
             <div className=' rounded-xl ml-2 flex flex-row gap-2  max-w-[70%]  py-2 my-2 self-start '>
             
