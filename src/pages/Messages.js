@@ -23,7 +23,7 @@ const Messages2 = ({user}) => {
   
     return (
       <div className='flex flex-col'>
-        <div className='h-[80vh] mt-10  bg-gray-800 w-full md:w-[50%] md:mx-auto text-white flex flex-col items-start overflow-y-auto overflow-x-hidden  '>
+        <div className='h-[80vh bg-gray-800 w-full md:w-[50%] md:mx-auto text-white flex flex-col items-start overflow-y-auto overflow-x-hidden  '>
           {messages &&
             messages.map((message) => (
               <Message key={message.id} message={message} user={user} />

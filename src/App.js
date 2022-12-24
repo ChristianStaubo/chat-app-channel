@@ -58,7 +58,11 @@ function App() {
   console.log(user)
   return (
     <div className="App">
-      <h1 className='text-4xl font-bold text-center'>Firebase Chat Room!</h1>
+      <div className='flex flex-col'>
+        <h1 className='text-4xl font-bold text-center'>Firebase Chat Room!</h1>
+        {user && <SignOut setUser={setUser}/>}
+      </div>
+      
       {/* <div className='mt-10 bg-blue-500'>
         <SignUp />
         {
