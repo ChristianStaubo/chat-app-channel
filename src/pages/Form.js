@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile  } from "firebase/auth";
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
 import { useNavigate } from "react-router-dom";
+import { collection, onSnapshot, query } from 'firebase/firestore';
 // let email = '123@gmail.com'
 // let password = 'password123'
 
@@ -14,6 +15,20 @@ function Form({setUser}) {
   const handleSignUp = (e) => {
     e.preventDefault()
     console.log(auth)
+    // const findUsers = () => {
+    //   const querySnapshot = query(collection(db, 'takenUsernames'));
+    //       const unsubscribe = onSnapshot(querySnapshot, (querySnapshot) => {
+            
+    //         querySnapshot.forEach((doc) => {
+    //           if (username === doc.username) {
+    //             console.log('USERNAME ALREADY TAKEN')
+    //             return
+    //           }
+    //         });
+            
+    //       });
+    //       return () => unsubscribe();
+    // }
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
