@@ -34,7 +34,10 @@ function FormLogIn({setUser}) {
         navigate('/signUp')
       }
   return (
-    <div className={`${!err ? 'mt-10 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[30%] mx-auto'}`}>
+    <div>
+
+    
+    <div className={`${!err ? 'mt-[50%] sm:mt-44 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[30%] mx-auto'}`}>
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Log in</h1>
             {err ? <p className='text-red-500'>Invalid email or password</p> : ''}
@@ -50,13 +53,26 @@ function FormLogIn({setUser}) {
             
 
             <div>
-                <p className='text-gray-300'>Don't have an account? <span className='text-blue-400' onClick={navigateToSignUp}>Sign up</span></p>
+                <p className='text-gray-300'>Don't have an account? <span className='text-blue-400 hover:cursor-pointer' onClick={navigateToSignUp}>Sign up</span></p>
             </div>
             <button type='submit'onClick={handleSignIn} className='text-gray-300 my-5 py-2 w-72 rounded bg-blue-800'>Log in</button>
             
             
             
         </form>
+    </div>
+    <footer>
+       
+       <div class='waves'>
+           <div class='wave' id='wave1'></div>
+           <div class='wave' id='wave2'></div>
+           <div class='wave' id='wave3'></div>
+           <div class='wave' id='wave4'></div>
+           <div class="notWave"></div>
+           
+
+       </div>
+       </footer>
     </div>
   )
 }

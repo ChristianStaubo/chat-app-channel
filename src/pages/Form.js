@@ -116,7 +116,7 @@ function Form({setUser}) {
             </div>
 
             <div>
-                <p className='text-gray-300'>Have an account? <span className='text-blue-400' onClick={navigateToLogin}>Log in</span></p>
+                <p className='text-gray-300'>Have an account? <span className='text-blue-400 hover:cursor-pointer' onClick={navigateToLogin}>Log in</span></p>
             </div>
             <button type='submit' className='text-gray-300 my-5 py-2 w-72 rounded bg-blue-800' onClick={handleSignUp}>Sign up</button>
             
