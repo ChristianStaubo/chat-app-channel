@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { collection, addDoc, serverTimestamp, getDocs  } from "firebase/firestore"
 import { db, auth } from '../firebase';
-function SendMessage() {
+function SendMessage({scroll}) {
     const [message,setMessage] = useState('')
     const [storedMessages,setStoredMessages] = useState([])
     const handleSend = async (e) => {
@@ -10,7 +10,7 @@ function SendMessage() {
         try {
             const docRef = await addDoc(collection(db, "messages"), {
               text: message,
-              name: auth.currentUser.dis,
+              name: auth.currentUser.displayName,
               timestamp: serverTimestamp()
               
             });
@@ -18,6 +18,7 @@ function SendMessage() {
             console.error("Error adding document: ", e);
           }
           setMessage('')
+          scroll.current.scrollIntoView({behavior: 'smooth'})
     }
 
     const getMessages = async (e) => {

@@ -28,11 +28,11 @@ const Messages2 = ({user}) => {
             messages.map((message) => (
               <Message key={message.id} message={message} user={user} />
             ))}
-            
+        
         </div>
-        <SendMessage />
+        <SendMessage scroll={scroll}/>
         
-        
+      <div ref={scroll}></div>
       </div>
     );
   };
