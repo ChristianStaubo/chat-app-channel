@@ -37,7 +37,7 @@ function FormLogIn({setUser}) {
     <div>
 
     
-    <div className={`${!err ? 'mt-[50%] sm:mt-44 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[30%] mx-auto'}`}>
+    <div className={`${!err ? 'mt-[50%] sm:mt-44 flex rounded-lg bg-gray-800 w-[95%] md:w-[40%] lg:w-[30%]  mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[40%] lg:w-[30%] mx-auto'}`}>
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Log in</h1>
             {err ? <p className='text-red-500'>Invalid email or password</p> : ''}
@@ -55,7 +55,7 @@ function FormLogIn({setUser}) {
             <div>
                 <p className='text-gray-300'>Don't have an account? <span className='text-blue-400 hover:cursor-pointer' onClick={navigateToSignUp}>Sign up</span></p>
             </div>
-            <button type='submit'onClick={handleSignIn} className='text-gray-300 my-5 py-2 w-72 rounded bg-blue-800'>Log in</button>
+            <button type='submit'onClick={handleSignIn} className='text-gray-300 my-5 py-2 w-72 rounded bg-blue-800 hoverBtn'>Log in</button>
             
             
             

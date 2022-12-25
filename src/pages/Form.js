@@ -3,8 +3,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, up
 import { auth, db } from '../firebase'
 import { useNavigate } from "react-router-dom";
 import { addDoc, collection, onSnapshot, query } from 'firebase/firestore';
-// let email = '123@gmail.com'
-// let password = 'password123'
+
 
 function Form({setUser}) {
   let navigate = useNavigate()
@@ -95,7 +94,7 @@ function Form({setUser}) {
     <div>
 
     
-    <div className={`${!err ? 'mt-10 flex rounded-lg bg-gray-800 w-[95%] md:w-[30%] mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[30%] mx-auto'}`}>
+    <div className={`${!err ? 'mt-10 flex rounded-lg bg-gray-800 w-[95%] md:w-[40%] lg:w-[30%] mx-auto' : 'mt-10 flex rounded-lg bg-gray-800 border-2 border-red-500 w-[95%] md:w-[40%] lg:w-[30%] mx-auto'}`}>
         <form className='flex flex-col justify-center items-center gap-4 w-full '>
             <h1 className='text-3xl font-bold pb-2 text-white'>Sign up</h1>
             {err ? <p className='text-red-500'>{errorMessage}</p> : ''}
@@ -121,7 +120,7 @@ function Form({setUser}) {
             <div>
                 <p className='text-gray-300'>Have an account? <span className='text-blue-400 hover:cursor-pointer' onClick={navigateToLogin}>Log in</span></p>
             </div>
-            <button type='submit' className='text-white my-5 py-2 w-72 rounded bg-[#7074bc]' onClick={handleSignUp}>Sign up</button>
+            <button type='submit' className='text-white my-5 py-2 w-72 rounded bg-[#7074bc] hoverBtnInverted' onClick={handleSignUp}>Sign up</button>
             
             
             

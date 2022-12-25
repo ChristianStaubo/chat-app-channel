@@ -23,7 +23,7 @@ function SignOut({setUser}) {
         });
       }
   return (
-    <button className='bg-yellow-500 w-[50%] md:w-[10%] self-center rounded my-2' onClick={handleSignOut}>Log out</button>
+    <button className='text-white my-5 py-2 w-72 rounded bg-[#7074bc] self-center hoverBtn  ' onClick={handleSignOut}>Log out</button>
   )
 }
 
